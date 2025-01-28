@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olle Ljung Portfolio</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(90deg, rgba(244, 0, 255, 0.3) 0%, rgba(255, 255, 255, 1) 16%, rgba(255, 255, 255, 1) 100%);
+        }
+
+        p {
+            color: black;
+            font-size: 12pt;
+            padding: 0px;
+            line-height: 1.5;
+            letter-spacing: 0.2px;
+            text-align: center;
+            margin: 5px;
+        }
+
+        header {
+            text-align: left;
+            padding: 5px;
+            padding-bottom: 100vh;
+        }
+
+        h1 {
+            font-family: 'Helvetica Neue', sans-serif;
+            text-align: center;
+            font-weight: 200;
+            font-size: 23pt;
+            font-style: italic;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: -20px;
+            font-size: 9px;
+            font-weight: normal;
+        }
+        .links a{
+            color:black;
+            text-decoration: underline;
+            text-decoration-thickness: 1.8px;
+        }
+        .links a:hover{
+            font-style:italic;
+            color:rgba(244, 0, 255, 0.3);
+        }
+
+        .project {
+            margin: 40px auto;
+        }
+
+        .carousel {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .carousel-slide img,
+        .carousel-slide video {
+            width: auto;
+            height: 45vw;
+            display: block;
+            margin: 0 auto;
+            object-fit: cover;
+        }
+       
+        .carousel-buttons {
+            position: absolute;
+            bottom: 22.5vw;
+            transform: translateY(0);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .carousel-button {
+            position: relative;
+            background: none;
+            border: none;
+            width: 150px; 
+            height: 150px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Left Arrow */
+        .carousel-button.prev::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-left: 1px solid black; 
+            border-bottom: 1px solid black;
+            transform: rotate(45deg);
+            left: 40%;
+        }
+
+        /* Right Arrow */
+        .carousel-button.next::before {
+            content: '';
+            position: absolute;
+            width: 60px; 
+            height: 60px; 
+            border-right: 1px solid black;
+            border-top: 1px solid black;
+            transform: rotate(45deg);
+            right: 40%; 
+        }
+
+        .carousel-button.hidden {
+            visibility: hidden;
+        }
+
+        .carousel-pagination {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 9px;
+        }
+
+        .click-zone {
+            position: absolute;
+            top: 0;
+            width: 33%;
+            height: 85%;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .click-zone.left {
+            left: 0;
+        }
+
+        .click-zone.right {
+            right: 0;
+        }
+
+        .project-description {
+            text-align: left;
+            margin-top: 10px;
+            margin: 5px;
+            padding-right: 25vw;
+            padding-left: 25vw;
+            font-size: 12pt;
+        }
+        .full-screen-container {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            border: solid black;
+            width: 100vw;
+            height: calc(100vh - 15px); 
+            display: flex;  
+            align-items: flex-end;  
+            justify-content: center;  
+        }
+
+        .full-screen-container p {
+            color: black; 
+            font-size: 12pt;
+            padding: 0;
+            margin: 0;
+            line-height: 1.5;
+            letter-spacing: 0.2px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Olle Ljung</h1>
+        <div class="links">
+        <p>
+        <a href="https://www.instagram.com/mors.lilla/" target="_blank">@mors.lilla</a> <br>
+        <a href="mailto:olleljung99@hotmail.com">olleljung99@hotmail.com</a>
+        </p>
+        </div>
+        
+    </header>
+    <div class="full-screen-container">
+        <p>↓ Projekt ↓</p>
+      </div>
+
+    <!-- New Projekt (Helvete) -->
+    <div class="project">
+        <div class="carousel">
+            <h1>Helvete</h1>
+            <h2>oktober 2024</h2>
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/3bimt6fu14cuixkno7f6f/Helvete_StudioBilder_Redigerade00008.jpg?rlkey=k20k1d7hvsmye9wqa68bw22jj&st=cvdqrby8&dl=0" alt="Olle Ljung">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/kg1l388r1ybivzed1k294/Helvete_StudioBilder_Redigerade00003.jpg?rlkey=g8g54w90ukbk4nkg5cczf1kh3&st=n8ymt5l1&dl=0" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/64dic660u7hndgh9d4ijp/Helvete_StudioBilder_Redigerade00001.jpg?rlkey=e91sjpt8lgiml6ak64yd5n0nj&st=naftd319&dl=0" alt="Projekt 1 Bild 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/ur3gcjs3zdowc16itrou3/Helvete_StudioBilder_Redigerade00007.jpg?rlkey=dij6ycbxl2r0y5e1cyrscaify&st=gmbu0zxn&dl=0" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/fv5vx6k1aaadlo0dqpv6o/Helvete_ScanRed_2.1.jpg?rlkey=p9uggxww5t0n7m50314vd0jda&st=hgbim3ul&dl=0" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/nr6gdc40sjyumsnm6iio2/Helvete_ScanRed_2.2_komprimerad.jpg?rlkey=w54jz4en8h34ze51kdmz692u0&st=vjs1hx4a&dl=0" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/7g5n9gp2ovku8rxkcb7hg/Helvete_ScanRed_2.3_komprimerad.jpg?rlkey=5x1yjb3bu1m4lr7gfd9usttts&st=p7amtip8&dl=0" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/703napn96itbk52r4657w/Helvete_ScanRed_2.4_komprimerad.jpg?rlkey=xeuylbmxtyugvlwv0cdwuol00&st=xl4arhyb&dl=0" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/ltonrr2wnqh88o99hbpg8/Helvete_ScanRed_2.5.jpg?rlkey=qgyvoex8gvhl6j02pyz44f6ka&st=jmd17psh&dl=0" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/prfys7vzhhjd5wt3sy1gu/Helvete_ScanRed_2.6.jpg?rlkey=fit847pa770dnzl15uqj4b5bb&st=eul6079t&dl=0" alt="Projekt 1 Bild 2">
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button prev"></button>
+                <button class="carousel-button next"></button>
+            </div>
+            <div class="click-zone left"></div>
+            <div class="click-zone right"></div>
+            <div class="carousel-pagination">1/2</div>
+        </div>
+        <div class="project-description">Detta projekt handlar om att återuppstarta ett nerlagt företag. Jag har valt att jobba med den legendarisk blackmetal skiv butiken Helvet som låg i Oslo på 90-talet. 
+            I min fiktiva uppstart har skivbutiken blivigt ett electroniskt musik projekt som jag har get en visuell identitet till.</div>
+    </div>
+
+      <!-- New Projekt (Essence)-->
+      <div class="project">
+        <div class="carousel">
+            <h1>Essence</h1>
+            <h2>januari 2025</h2>
+            <div class="carousel-track">
+
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/4246dalau4kvdu4v5bwp2/Essence_bladdra.gif?rlkey=q6kgy5f1uxx2ozdrhqhf6vhcx&st=1c7tkdta&dl=0" alt="gif 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/s84botplgntkufgqrcb1n/Olle_Essence.gif?rlkey=2wtf41zj50ex2vb8saq0axpte&st=ulzgsgmu&dl=0" alt="gif 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/0wjbxd9xa5ralgx44be9o/Essemce_SystemK._redigerade-1.jpg?rlkey=axcudiusugv867oyl3u3cgz0v&st=kkh34slj&dl=0" alt="Projekt 2 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/1e3w9zl7aol41dak188r3/Essemce_SystemK._redigerade-2.jpg?rlkey=pxwnoesof0thczumvk522l3l0&st=801aj3ok&dl=0" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/qxs4o7gnxpmbk68ulvfwg/Essemce_SystemK._redigerade-3.jpg?rlkey=5k0gl186z14i82wbwq05y6etz&st=7anz7qjf&dl=0" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/qur34w6y948q30f3fc2sl/Essemce_SystemK._redigerade-4.jpg?rlkey=sjkpaomn1x044m1gazh4cvifo&st=339791jv&dl=0" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/5eyr8iy0cqkk236cwkv5n/IMG_0293.JPG?rlkey=xiq8aixj0r5792jdh6howlta9&st=imshfzl7&dl=0" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/ycy3lw0dlvflfsao6zkhr/000066900010.jpg?rlkey=r6dyqulj7gdy7yi0i7zpgbcm6&st=rlpel3hi&dl=0" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/kniscqwlmlo0t0jj7mdu1/000066880014.jpg?rlkey=juf6zv34wrbowsgzx7is0ynhd&st=4kdd9lkj&dl=0" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/fr3t631azt34lazrzbflp/000066900020.jpg?rlkey=cx2njzds22iii5vubtrgit9v8&st=s2hcalc2&dl=0" alt="Projekt 2 Bild 3">
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button prev"></button>
+                <button class="carousel-button next"></button>
+            </div>
+            <div class="click-zone left"></div>
+            <div class="click-zone right"></div>
+            <div class="carousel-pagination">1/3</div>
+        </div>
+        <div class="project-description"> Redaktionellt arbete tillsamans med Edda Eliasson, Emmy Seeger och Wilma Reichardt. Emina Iman är en kreatör vars konst och uttryck kretsar kring frihet, individualitet, pondus och kreativitet. Genom att fördjupa sig i det specifika som definierar oss, lyfter hon fram det som förenar oss – genom dans, bild, poesi och samtal.</div>
+    </div>
+
+    <!-- New Projekt (Magasin 3) -->
+    <div class="project">
+        <div class="carousel">
+            <h1>Magasin 3</h1>
+            <h2>januari 2024</h2>
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/4c30oll80tlvxx3vawms5/IMG_2838.png?rlkey=pcefw91ya0pitwddj229diq3q&st=b9n8rx4o&dl=0" alt="Slide 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/kjccnkghxn8awgjwstwcn/Olle_Ljung.png?rlkey=sbt5prrwq33k04x14qiuadwh5&st=t900qm1x&dl=0" alt="Slide 2">
+                </div>
+                <div class="carousel-slide">
+                    <video controls>
+                        <source src="https://dl.dropboxusercontent.com/scl/fi/46bl0tt6cokcrpq2copta/Reseplanerare-bakrund.mp4?rlkey=y24h0i97fkq5lwu3dmws3cwum&st=uyc3hzpv&dl=0" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button prev"></button>
+                <button class="carousel-button next"></button>
+            </div>
+            <div class="click-zone left"></div>
+            <div class="click-zone right"></div>
+            <div class="carousel-pagination">1/3</div>
+        </div>
+        <div class="project-description">
+            I en sammarbets kurs tillsamans med Magasin 3 har vi utmanats vad en museeaffish kan vara.
+        </div>
+    </div>
+    
+
+       <!-- New Projekt (Landscapes)-->
+       <div class="project">
+        <div class="carousel">
+            <h1>Landscapes</h1>
+            <h2>mars 2024</h2>
+            <div class="carousel-track">
+            <div class="carousel-slide">
+
+                <video controls preload="metadata">
+                    <source src="https://dl.dropboxusercontent.com/scl/fi/l9jzp733oy5753wuhmzd1/Landscapes.mp4?rlkey=jhcfjwl3cnmroc4bym899ii5b&st=y2a6dy91&dl=0" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/2xvjtpv70jiex0bdbuing/Landscape_Stills1.jpg?rlkey=d4nz5455jb13fg39qsnvei6iz&st=xzfqmllw&dl=0" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/4luaye0ei7m1uutoofvfs/Landscape_Stills4.jpg?rlkey=jrpq17maewq6weve25mrmezp9&st=uh73c1rh&dl=0" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/349j69z4gk0nznssw8rl4/Landscape_Stills5.jpg?rlkey=1177q5kafo7he4qd5av836cvk&st=0x3v7xs5&dl=0" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/ipvci3dpxtdlv4gyifihu/Landscape_Stills6.jpg?rlkey=fmihun9d9pvbinxm5d4p1prqk&st=c1knglcy&dl=0" alt="Landscapes">
+            </div>
+
+            <div class="carousel-slide">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/z3c3q9qb2xrt0lla4tq8b/Landscape_Stills8.jpg?rlkey=5dm9gi7e1upihtmutevc3gr2q&st=66d3iahz&dl=0" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/ikiiemq1zix2mr8e7m5gq/Landscape_Stills9.jpg?rlkey=he10cl9wcx01q5wsq7cotybb4&st=zm6zho3v&dl=0" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/jn4ghar23qhn4hvg1clu8/Landscape_Stills10.jpg?rlkey=e92qgu0ot1ykmndxf79a1xz2l&st=7ex744ey&dl=0" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/jflkm732xcftcy4cx912e/Landscape_Stills11.jpg?rlkey=83tthujeto9ynbr57dgr2kjcg&st=0u40yyfk&dl=0" alt="Landscapes">
+            </div>
+        </div>
+        <div class="carousel-buttons">
+            <button class="carousel-button prev"></button>
+            <button class="carousel-button next"></button>
+        </div>
+            <div class="click-zone left"></div>
+            <div class="click-zone right"></div>
+            <div class="carousel-pagination">1/1</div>
+        </div>
+        <div class="project-description">Musik video med Emmy och Phoebe med kmh.</div>
+    </div>
+
+      <!-- New Projekt (kan du göra ett g åt mig?)-->
+      <div class="project">
+        <div class="carousel">
+            <h1>Kan du göra ett g åt mig?</h1>
+            <h2>oktober 2023</h2>
+            <div class="carousel-track">
+
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/o4eumiveb9lfksu7d0jmb/Sida_1G.png?rlkey=3vtxjg41ih67sj5d37gyr5pdx&st=coatnv5u&dl=0" alt="Projekt 2 Bild 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/69uhw2v29r0hneyylinpp/Sida_2G_komprimerad.jpg?rlkey=v6vv5qarqthf6e2kra73v7k0i&st=807wpumz&dl=0" alt="Projekt 2 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/oahknzlyrtofmtz8huywm/Sida_3G_komprimerad.jpg?rlkey=qkjxe9h1u1duih5fbnw1qe5ug&st=4sfevaqk&dl=0" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/k9yv37hi4nfnl2x84vdyx/Typo_insta_1.png?rlkey=ix5m91s6d4cemmrs7jsa5z94z&st=45jy6xcf&dl=0" alt="Projekt 2 Bild 4">
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button prev"></button>
+                <button class="carousel-button next"></button>
+            </div>
+            <div class="click-zone left"></div>
+            <div class="click-zone right"></div>
+            <div class="carousel-pagination">1/4</div>
+        </div>
+        <div class="project-description">Ett uppslag i en fanzine tillsamans med min klass på Beckmans på temaat typografi gjorde jag om bokstaven g.</div>
+    </div>
+
+         <!-- New Projekt (Netralon)-->
+         <div class="project">
+            <div class="carousel">
+                <h1>Netralon</h1>
+                <h2>november 2023</h2>
+                <div class="carousel-track">
+                   
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/tcs0zx41faao5u5cvqhgp/Netralon_Produkbild2_komprimerad.jpg?rlkey=mqqcjteaieuowsaxbtu0yatjw&st=2wzdlyiv&dl=0" alt="Landscapes">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/a95wtvj17naefu9ok5sgg/Netralon_Produkbilder_Sladd1_komprimerad.jpg?rlkey=4l195q2yu6ladd7fz9en1tzy9&st=d4ri1sma&dl=0" alt="Landscapes">
+                    </div>
+                    <div class="carousel-slide">
+                        <video controls preload="metadata">
+                            <source src="https://dl.dropboxusercontent.com/scl/fi/brud09rvi6a46zdlakg91/NETRALON-GAMEPLAY.mp4?rlkey=3fgdvbjrdx9pkdeue71hsvh1s&st=dqpg1s8a&dl=0" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                      <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/pts3anup1o9o2mv1bi55m/P1060230.JPG?rlkey=isd9bljebqf41juun8onkmkz6&st=3mb03re8&dl=0" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/wy1kq285jyxfjvqsduin7/P1060198.JPG?rlkey=khkotkl6lyq3rgvsdys4l52ol&st=hht83x44&dl=0" alt="Projekt 2 Bild 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/cif3lgo54lohtyqv9tm3z/P1060236.JPG?rlkey=i4w2x5es7uj76z7jsq0u885a8&st=0aze7fo2&dl=0" alt="Projekt 2 Bild 4">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/d6whrco45c8sku3s3n6ja/P1060263.JPG?rlkey=x70jkp6s05w96jtpf49c7t4sw&st=pmqgvkf8&dl=0" alt="Projekt 2 Bild 6">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/63yier2ihpfbrv7izjtsj/P1060285.JPG?rlkey=dotwfmwyzqt4ozn9zwstdr4ae&st=68e8e0e5&dl=0" alt="Projekt 2 Bild 7">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/olczl7aiq6l5jc2009wks/P1060370.JPG?rlkey=5upa9ae5q8bwnhth68tk78hyo&st=k2k8ieqi&dl=0" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/86y0sabi125948rtuek03/P10100181.JPG?rlkey=k884i2i7n819tn9ktv2qpdjrl&st=t2z5gyln&dl=0" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/j0hmlmdlvk09ry1c1iyvl/Foto-03.11.23-15-13-58.jpg?rlkey=szpk842a4vyy6do7t917533ze&st=hxeruejl&dl=0" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/dp63slzibmh0m1j4p8p5q/Foto-13.11.23-16-37-00.jpg?rlkey=yql2sssbd12ey3ho55ygpwnqx&st=m2wiwugl&dl=0" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/cpz9kw359d92k26anflhz/Foto-13.11.23-17-00-02.jpg?rlkey=esdb7z4k269iiltxb258gqkmh&st=r48kuqqd&dl=0" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/nx55islr85ye8t27ax03u/P1010039.JPG?rlkey=yg16dnmh2kjrzxx7b5ikkkbg5&st=po83kk3u&dl=0" alt="Projekt 2 Bild 5">
+                    </div>
+                </div>
+                <div class="carousel-buttons">
+                    <button class="carousel-button prev"></button>
+                    <button class="carousel-button next"></button>
+                </div>
+                <div class="click-zone left"></div>
+                <div class="click-zone right"></div>
+                <div class="carousel-pagination">1/14</div>
+            </div>
+            <div class="project-description"> Netralon är ett spel där du tar dig igenom en jobbdag ett företag från 90-talet. Ett spel som jag till sammans med Vilmer, Linn och Ella har kodat, animerat, bygt och lödigt ihop helt från grunden. </div>
+        </div>
+
+    <script>
+        const carousels = document.querySelectorAll('.carousel');
+
+        carousels.forEach((carousel) => {
+            const track = carousel.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const prevButton = carousel.querySelector('.carousel-button.prev');
+            const nextButton = carousel.querySelector('.carousel-button.next');
+            const pagination = carousel.querySelector('.carousel-pagination');
+            const leftZone = carousel.querySelector('.click-zone.left');
+            const rightZone = carousel.querySelector('.click-zone.right');
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            slides.forEach((slide, index) => {
+                slide.style.left = `${100 * index}%`;
+            });
+
+            const updatePagination = () => {
+                pagination.textContent = `${currentIndex + 1}/${totalSlides}`;
+            };
+
+            const updateButtons = () => {
+                prevButton.classList.toggle('hidden', currentIndex === 0);
+                nextButton.classList.toggle('hidden', currentIndex === totalSlides - 1);
+            };
+
+            const moveToSlide = (index) => {
+                track.style.transform = `translateX(-${100 * index}%)`;
+                currentIndex = index;
+                updatePagination();
+                updateButtons();
+            };
+
+            nextButton.addEventListener('click', () => {
+                if (currentIndex < totalSlides - 1) {
+                    moveToSlide(currentIndex + 1);
+                }
+            });
+
+            prevButton.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    moveToSlide(currentIndex - 1);
+                }
+            });
+
+            rightZone.addEventListener('click', () => {
+                if (currentIndex < totalSlides - 1) {
+                    moveToSlide(currentIndex + 1);
+                }
+            });
+
+            leftZone.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    moveToSlide(currentIndex - 1);
+                }
+            });
+
+            updatePagination();
+            updateButtons();
+        });
+        const video = document.querySelector("video");
+video.muted = false; // Ensures the video is not muted
+
+
+    </script>
+</body>
+
+</html>
