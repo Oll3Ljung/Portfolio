@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olle Ljung Portfolio</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(90deg, rgba(244, 0, 255, 0.3) 0%, rgba(255, 255, 255, 1) 16%, rgba(255, 255, 255, 1) 100%);
+        }
+
+        p {
+            color: black;
+            font-size: 12pt;
+            padding: 0px;
+            line-height: 1.5;
+            letter-spacing: 0.2px;
+            text-align: center;
+            margin: 5px;
+        }
+
+        header {
+            text-align: left;
+            padding: 5px;
+            padding-bottom: 100vh;
+        }
+
+        h1 {
+            font-family: 'Helvetica Neue', sans-serif;
+            text-align: center;
+            font-weight: 200;
+            font-size: 23pt;
+            font-style: italic;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: -20px;
+            font-size: 9px;
+            font-weight: normal;
+        }
+        .links a{
+            color:black;
+            text-decoration: underline;
+            text-decoration-thickness: 1.8px;
+        }
+        .links a:hover{
+            font-style:italic;
+            color:rgba(244, 0, 255, 0.3);
+        }
+
+        .project {
+            margin: 40px auto;
+        }
+
+        .carousel {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .carousel-slide img,
+        .carousel-slide video {
+            width: auto;
+            height: 45vw;
+            display: block;
+            margin: 0 auto;
+            object-fit: cover;
+        }
+       
+        .carousel-buttons {
+            position: absolute;
+            bottom: 22.5vw;
+            transform: translateY(0);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .carousel-button {
+            position: relative;
+            background: none;
+            border: none;
+            width: 150px; 
+            height: 150px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Left Arrow */
+        .carousel-button.prev::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-left: 1px solid black; 
+            border-bottom: 1px solid black;
+            transform: rotate(45deg);
+            left: 40%;
+        }
+
+        /* Right Arrow */
+        .carousel-button.next::before {
+            content: '';
+            position: absolute;
+            width: 60px; 
+            height: 60px; 
+            border-right: 1px solid black;
+            border-top: 1px solid black;
+            transform: rotate(45deg);
+            right: 40%; 
+        }
+
+        .carousel-button.hidden {
+            visibility: hidden;
+        }
+
+        .carousel-pagination {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 9px;
+        }
+
+        .click-zone {
+            position: absolute;
+            top: 0;
+            width: 33%;
+            height: 85%;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .click-zone.left {
+            left: 0;
+        }
+
+        .click-zone.right {
+            right: 0;
+        }
+
+        .project-description {
+            text-align: left;
+            margin-top: 10px;
+            margin: 5px;
+            padding-right: 25vw;
+            padding-left: 25vw;
+            font-size: 12pt;
+        }
+        .full-screen-container {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            border: solid black;
+            width: 100vw;
+            height: calc(100vh - 15px); 
+            display: flex;  
+            align-items: flex-end;  
+            justify-content: center;  
+        }
+
+        .full-screen-container p {
+            color: black; 
+            font-size: 12pt;
+            padding: 0;
+            margin: 0;
+            line-height: 1.5;
+            letter-spacing: 0.2px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Olle Ljung</h1>
+        <div class="links">
+        <p>
+        <a href="https://www.instagram.com/mors.lilla/" target="_blank">@mors.lilla</a> <br>
+        <a href="mailto:olleljung99@hotmail.com">olleljung99@hotmail.com</a>
+        </p>
+        </div>
+        
+    </header>
+    <div class="full-screen-container">
+        <p>↓ Projekt ↓</p>
+      </div>
+
+    <!-- New Projekt (Helvete) -->
+    <div class="project">
+        <div class="carousel">
+            <h1>Helvete</h1>
+            <h2>oktober 2024</h2>
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img src="./Public/Helvete/Helvete_StudioBilder_Redigerade00008.jpg" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="./Public/Helvete/Helvete_StudioBilder_Redigerade00003.jpg" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="./Public/Helvete/Helvete_StudioBilder_Redigerade00001.jpg" alt="Projekt 1 Bild 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="./Public/Helvete/Helvete_StudioBilder_Redigerade00007.jpg" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Helvete/Helvete_ScanRed_2.1.jpg" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Helvete/Helvete_ScanRed_2.2_komprimerad.jpg" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Helvete/Helvete_ScanRed_2.3_komprimerad.jpg" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Helvete/Helvete_ScanRed_2.4_komprimerad.jpg" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Helvete/Helvete_ScanRed_2.5.jpg" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Helvete/Helvete_ScanRed_2.6.jpg" alt="Projekt 1 Bild 2">
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button prev"></button>
+                <button class="carousel-button next"></button>
+            </div>
+            <div class="click-zone left"></div>
+            <div class="click-zone right"></div>
+            <div class="carousel-pagination">1/2</div>
+        </div>
+        <div class="project-description">Detta projekt handlar om att återuppstarta ett nerlagt företag. Jag har valt att jobba med den legendarisk blackmetal skiv butiken Helvet som låg i Oslo på 90-talet. 
+            I min fiktiva uppstart har skivbutiken blivigt ett electroniskt musik projekt som jag har get en visuell identitet till.</div>
+    </div>
+
+      <!-- New Projekt (Essence)-->
+      <div class="project">
+        <div class="carousel">
+            <h1>Essence</h1>
+            <h2>januari 2025</h2>
+            <div class="carousel-track">
+
+                <div class="carousel-slide">
+                    <img src="Public/Essence/Essence_bladdra.gif" alt="gif 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Essence/Olle_Essence.gif" alt="gif 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Essence/Essemce_SystemK._redigerade-1.jpg" alt="Projekt 2 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Essence/Essemce_SystemK._redigerade-2.jpg" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Essence/Essemce_SystemK._redigerade-3.jpg" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Essence/Essemce_SystemK._redigerade-4.jpg" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Essence/IMG_0293.JPG" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Essence/000066900010.jpg" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Essence/000066880014.jpg" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Essence/000066900020.jpg" alt="Projekt 2 Bild 3">
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button prev"></button>
+                <button class="carousel-button next"></button>
+            </div>
+            <div class="click-zone left"></div>
+            <div class="click-zone right"></div>
+            <div class="carousel-pagination">1/3</div>
+        </div>
+        <div class="project-description"> Redaktionellt arbete tillsamans med Edda Eliasson, Emmy Seeger och Wilma Reichardt. Emina Iman är en kreatör vars konst och uttryck kretsar kring frihet, individualitet, pondus och kreativitet. Genom att fördjupa sig i det specifika som definierar oss, lyfter hon fram det som förenar oss – genom dans, bild, poesi och samtal.</div>
+    </div>
+
+    <!-- New Projekt (Magasin 3) -->
+    <div class="project">
+        <div class="carousel">
+            <h1>Magasin 3</h1>
+            <h2>januari 2024</h2>
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img src="Public/Magasin 3/IMG_2838.png" alt="Slide 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/Magasin 3/Olle_Ljung.png" alt="Slide 2">
+                </div>
+                <div class="carousel-slide">
+                    <video controls>
+                        <source src="Public/Magasin 3/Reseplanerare-bakrund.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button prev"></button>
+                <button class="carousel-button next"></button>
+            </div>
+            <div class="click-zone left"></div>
+            <div class="click-zone right"></div>
+            <div class="carousel-pagination">1/3</div>
+        </div>
+        <div class="project-description">
+            I en sammarbets kurs tillsamans med Magasin 3 har vi utmanats vad en museeaffish kan vara.
+        </div>
+    </div>
+    
+
+       <!-- New Projekt (Landscapes)-->
+       <div class="project">
+        <div class="carousel">
+            <h1>Landscapes</h1>
+            <h2>mars 2024</h2>
+            <div class="carousel-track">
+            <div class="carousel-slide">
+
+                <video controls preload="metadata">
+                    <source src="Public/Landscape/Landscapes.mp4#t=0.5" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="carousel-slide">
+                <img src="Public/Landscape/Landscape_Stills1.jpg" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="Public/Landscape/Landscape_Stills4.jpg" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="Public/Landscape/Landscape_Stills5.jpg" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="Public/Landscape/Landscape_Stills6.jpg" alt="Landscapes">
+            </div>
+
+            <div class="carousel-slide">
+                <img src="Public/Landscape/Landscape_Stills8.jpg" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="Public/Landscape/Landscape_Stills9.jpg" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="Public/Landscape/Landscape_Stills10.jpg" alt="Landscapes">
+            </div>
+            <div class="carousel-slide">
+                <img src="Public/Landscape/Landscape_Stills11.jpg" alt="Landscapes">
+            </div>
+        </div>
+        <div class="carousel-buttons">
+            <button class="carousel-button prev"></button>
+            <button class="carousel-button next"></button>
+        </div>
+            <div class="click-zone left"></div>
+            <div class="click-zone right"></div>
+            <div class="carousel-pagination">1/1</div>
+        </div>
+        <div class="project-description">Musik video med Emmy och Phoebe med kmh.</div>
+    </div>
+
+      <!-- New Projekt (kan du göra ett g åt mig?)-->
+      <div class="project">
+        <div class="carousel">
+            <h1>Kan du göra ett g åt mig?</h1>
+            <h2>oktober 2023</h2>
+            <div class="carousel-track">
+
+                <div class="carousel-slide">
+                    <img src="Public/G/Sida_1G.png" alt="Projekt 2 Bild 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/G/Sida_2G_komprimerad.jpg" alt="Projekt 2 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/G/Sida_3G_komprimerad.jpg" alt="Projekt 2 Bild 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="Public/G/Typo_insta_1.png" alt="Projekt 2 Bild 4">
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button prev"></button>
+                <button class="carousel-button next"></button>
+            </div>
+            <div class="click-zone left"></div>
+            <div class="click-zone right"></div>
+            <div class="carousel-pagination">1/4</div>
+        </div>
+        <div class="project-description">Ett uppslag i en fanzine tillsamans med min klass på Beckmans på temaat typografi gjorde jag om bokstaven g.</div>
+    </div>
+
+         <!-- New Projekt (Netralon)-->
+         <div class="project">
+            <div class="carousel">
+                <h1>Netralon</h1>
+                <h2>november 2023</h2>
+                <div class="carousel-track">
+                   
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/Netralon_Produkbild2_komprimerad.jpg" alt="Landscapes">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/Netralon_Produkbilder_Sladd1_komprimerad.jpg" alt="Landscapes">
+                    </div>
+                    <div class="carousel-slide">
+                        <video controls preload="metadata">
+                            <source src="Public/Netralon/NETRALON GAMEPLAY.mp4#t=0.1" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                      <div class="carousel-slide">
+                        <img src="Public/Netralon/P1060230.JPG" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/P1060198.JPG" alt="Projekt 2 Bild 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/P1060236.JPG" alt="Projekt 2 Bild 4">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/P1060263.JPG" alt="Projekt 2 Bild 6">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/P1060285.JPG" alt="Projekt 2 Bild 7">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/P1060370.JPG" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/P10100181.JPG" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/Foto 03.11.23 15 13 58.jpg" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/Foto 13.11.23 16 37 00.jpg" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/Foto 13.11.23 17 00 02.jpg" alt="Projekt 2 Bild 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Public/Netralon/P1010039.JPG" alt="Projekt 2 Bild 5">
+                    </div>
+                </div>
+                <div class="carousel-buttons">
+                    <button class="carousel-button prev"></button>
+                    <button class="carousel-button next"></button>
+                </div>
+                <div class="click-zone left"></div>
+                <div class="click-zone right"></div>
+                <div class="carousel-pagination">1/14</div>
+            </div>
+            <div class="project-description"> Netralon är ett spel där du tar dig igenom en jobbdag ett företag från 90-talet. Ett spel som jag till sammans med Vilmer, Linn och Ella har kodat, animerat, bygt och lödigt ihop helt från grunden. </div>
+        </div>
+
+    <script>
+        const carousels = document.querySelectorAll('.carousel');
+
+        carousels.forEach((carousel) => {
+            const track = carousel.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const prevButton = carousel.querySelector('.carousel-button.prev');
+            const nextButton = carousel.querySelector('.carousel-button.next');
+            const pagination = carousel.querySelector('.carousel-pagination');
+            const leftZone = carousel.querySelector('.click-zone.left');
+            const rightZone = carousel.querySelector('.click-zone.right');
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            slides.forEach((slide, index) => {
+                slide.style.left = `${100 * index}%`;
+            });
+
+            const updatePagination = () => {
+                pagination.textContent = `${currentIndex + 1}/${totalSlides}`;
+            };
+
+            const updateButtons = () => {
+                prevButton.classList.toggle('hidden', currentIndex === 0);
+                nextButton.classList.toggle('hidden', currentIndex === totalSlides - 1);
+            };
+
+            const moveToSlide = (index) => {
+                track.style.transform = `translateX(-${100 * index}%)`;
+                currentIndex = index;
+                updatePagination();
+                updateButtons();
+            };
+
+            nextButton.addEventListener('click', () => {
+                if (currentIndex < totalSlides - 1) {
+                    moveToSlide(currentIndex + 1);
+                }
+            });
+
+            prevButton.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    moveToSlide(currentIndex - 1);
+                }
+            });
+
+            rightZone.addEventListener('click', () => {
+                if (currentIndex < totalSlides - 1) {
+                    moveToSlide(currentIndex + 1);
+                }
+            });
+
+            leftZone.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    moveToSlide(currentIndex - 1);
+                }
+            });
+
+            updatePagination();
+            updateButtons();
+        });
+        const video = document.querySelector("video");
+video.muted = false; // Ensures the video is not muted
+
+
+    </script>
+</body>
+
+</html>
