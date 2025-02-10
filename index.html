@@ -4,57 +4,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olle Ljung Portfolio</title>
+    <title>Portfolio</title>
     <style>
         body {
             font-family: 'Helvetica Neue', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(90deg, rgba(244, 0, 255, 0.3) 0%, rgba(255, 255, 255, 1) 16%, rgba(255, 255, 255, 1) 100%);
+            background: linear-gradient(90deg, 
+            rgba(244, 0, 255, 0.3) 5%, 
+            rgba(255, 255, 255, 1) 16%,
+            rgba(255, 255, 255, 1) 100%
+            );
         }
 
         p {
             color: black;
             font-size: 12pt;
+            font-weight: normal;
             padding: 0px;
-            line-height: 1.5;
+            line-height: 1.4;
             letter-spacing: 0.2px;
             text-align: center;
-            margin: 5px;
+           
         }
 
         header {
             text-align: left;
             padding: 5px;
-            padding-bottom: 100vh;
+            height: 100vh;
         }
 
+        footer{
+            text-align: center;
+            height: 25vh; 
+            position: relative;
+        }
+        .profil {
+            position: absolute;
+            height: 50px;
+            width: 100px;
+            border: solid;
+            bottom: 65px;
+            left: 50%;
+            transform: translateX(-50%);
+        }   
         h1 {
             font-family: 'Helvetica Neue', sans-serif;
             text-align: center;
             font-weight: 200;
-            font-size: 23pt;
-            font-style: italic;
+            font-size: 42pt;
+            margin-top: 15px;
         }
 
         h2 {
             text-align: center;
             margin-top: -20px;
+            margin-bottom: 10px;
             font-size: 9px;
             font-weight: normal;
+            z-index: 12;
         }
         .links a{
             color:black;
             text-decoration: underline;
-            text-decoration-thickness: 1.8px;
+            text-decoration-thickness: .5px;
+            text-underline-offset: 2pt;
         }
         .links a:hover{
+            text-decoration: none;
+            color:rgba(244, 0, 255, 0.3);
+        }
+        .scroll-link{
+        font-size: 42pt;
+        font-weight: 200;
+        line-height: 1.2;
+        }
+        #hover-image {
+            position: absolute;
+            width: 200px;
+            height: auto;
+            display: none;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .info {
+            font-size: 12pt;
+            font-weight: 400;
+        }
+        #back-to-top {
+            color: white;
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%); 
+            text-align: center;
+            font-size: 12pt;
+            font-weight: normal;
+            text-decoration: none;
+            opacity: 0; 
+            transition: opacity 0.5s ease-in-out; 
+            z-index: 11;
+            mix-blend-mode: difference;
+        }
+        #back-to-top :hover{
             font-style:italic;
             color:rgba(244, 0, 255, 0.3);
         }
 
         .project {
-            margin: 40px auto;
+            margin: 200px auto;
+        }
+        .project-description {
+            text-align: left;
+            margin-top: 37px;
+            line-height: 1.4;
+            letter-spacing: 0.2px;
+            padding-right: 25vw;
+            padding-left: 25vw;
+            font-size: 12pt;
+            font-weight: normal;
+        }
+        .carousel-pagination {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 9px;
         }
 
         .carousel {
@@ -77,6 +150,7 @@
         .carousel-slide img,
         .carousel-slide video {
             width: auto;
+            max-height:95vh ;
             height: 45vw;
             display: block;
             margin: 0 auto;
@@ -108,8 +182,8 @@
         .carousel-button.prev::before {
             content: '';
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 20px;
+            height: 20px;
             border-left: 1px solid black; 
             border-bottom: 1px solid black;
             transform: rotate(45deg);
@@ -120,8 +194,8 @@
         .carousel-button.next::before {
             content: '';
             position: absolute;
-            width: 60px; 
-            height: 60px; 
+            width: 20px; 
+            height: 20px; 
             border-right: 1px solid black;
             border-top: 1px solid black;
             transform: rotate(45deg);
@@ -132,17 +206,12 @@
             visibility: hidden;
         }
 
-        .carousel-pagination {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 9px;
-        }
 
         .click-zone {
             position: absolute;
             top: 0;
-            width: 33%;
-            height: 85%;
+            width: 25%;
+            height: 80%;
             cursor: pointer;
             z-index: 10;
         }
@@ -155,20 +224,11 @@
             right: 0;
         }
 
-        .project-description {
-            text-align: left;
-            margin-top: 10px;
-            margin: 5px;
-            padding-right: 25vw;
-            padding-left: 25vw;
-            font-size: 12pt;
-        }
         .full-screen-container {
             position: absolute;
             z-index: -1;
             top: 0;
             left: 0;
-            border: solid black;
             width: 100vw;
             height: calc(100vh - 15px); 
             display: flex;  
@@ -185,26 +245,122 @@
             letter-spacing: 0.2px;
             text-align: center;
         }
+        .audio-container {
+            height: 45vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            z-index:11;
+
+        }   
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-panel {
+        background-color: #fff;
+        color: #fff;
+        }
+        audio{
+            width: 40%;
+            z-index:11;
+            pointer-events: auto !important;
+            opacity: 1 !important;
+        }
+        @media (max-width: 768px) {
+         body{
+            font-size: 12px;
+        }
+        .carousel-slide img,
+        .carousel-slide video {
+            max-width: 95vw;
+            height: 70vw;
+        }
+        .links {
+            display: flex;  /* Arrange links in a row */
+            justify-content: center;  /* Center links horizontally */
+            gap: 15px; /* Space between links */
+        }
+        h1 {
+            font-size: 42pt;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        h2{
+            margin-top: 0px;
+        }
+        .scroll-link{
+            font-size: 42pt;
+            font-weight: 200;
+        }
+        .info {
+            font-size: 12pt;
+            font-weight: 400;
+        }
+         a {
+            display: block;
+            margin-bottom: -20px;
+        }
+        .project-description {
+            margin-top: 10px;
+            margin: 9px;
+            padding-right: 2vw;
+            padding-left: 2vw;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+        #back-to-top {
+            bottom: 25px;
+        }
+        .click-zone {
+            width: 20%;
+            height: 80%;
+        }
+        .full-screen-container {
+            height: 750px;  
+        }
+        audio{
+            width: 80%;
+            z-index:11;
+        }
+        .audio-container {
+            height: 70vw;
+            align-items: right;
+        }
+        
+    }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Olle Ljung</h1>
+        <h1>Olle Ljung </h1>
         <div class="links">
         <p>
-        <a href="https://www.instagram.com/mors.lilla/" target="_blank">@mors.lilla</a> <br>
-        <a href="mailto:olleljung99@hotmail.com">olleljung99@hotmail.com</a>
+        <a href="mailto:olleljung99@hotmail.com">mail</a>
+        &nbsp;
+        <a href="https://www.instagram.com/mors.lilla/" target="_blank">instagram</a>
+        &nbsp;
+        <a href="#info" class="info scroll-link">info</a>
+        <br> <br> <br>
+        <a href="#project1" class="scroll-link"  data-image="https://dl.dropboxusercontent.com/scl/fi/ntsyxaljhwcy32oe64rwb/hemsida-icon-6.jpg?rlkey=ltfgx0tutv6bdnr2wh2ihvlhs&st=wy5x3rb9&dl=0">Helvete</a> <br>
+        <a href="#project2" class="scroll-link" data-image="https://dl.dropboxusercontent.com/scl/fi/hznjcfhbldp18gtgpavcf/hemsida-icon-1.jpg?rlkey=nonlsemk3182z4exh90vswbay&st=8eobvquf&dl=0">Essence</a> <br>
+        <a href="#project3" class="scroll-link" data-image="https://dl.dropboxusercontent.com/scl/fi/ds3gykcj4kp4ba8jh5vhj/hemsida-icon-4.jpg?rlkey=1ivbsal6nfvxh5e3x8fy9xxjt&st=z8gdf8dt&dl=0">Magasin 3</a> <br>
+        <a href="#project4" class="scroll-link" data-image="https://dl.dropboxusercontent.com/scl/fi/ziy3xztfsl1gd8x9ov2d7/hemsida-icon-5.jpg?rlkey=kk5lk8fck3tsra4g75y0z1ffe&st=ml5y01ae&dl=0">Landscapes</a> <br>
+        <a href="#project5" class="scroll-link" data-image="https://dl.dropboxusercontent.com/scl/fi/mo4c3hgfzlwphexwuuwr1/hemsida-icon-2.jpg?rlkey=htwihjxc7648u7rx74i6zjq6e&st=s72qf3tz&dl=0">Kan du göra ett g åt mig?</a> <br>
+        <a href="#project6" class="scroll-link" data-image="https://dl.dropboxusercontent.com/scl/fi/pgfaesju9oi77u9dqg0mb/hemsida-icon-3.jpg?rlkey=98n9guicx3aebjtb883vqmzwg&st=3qejayhd&dl=0">Netralon</a> <br>
+        
+        <!-- Denna bild används för hover-effekten -->
+        <img id="hover-image" src="" alt="Projektbild" style="display: none; position: absolute; width: 200px;">
         </p>
         </div>
-        
+        <a href="#top" class="scroll-link" id="back-to-top">↑ tillbaka ↑</a>
     </header>
     <div class="full-screen-container">
-        <p>↓ Projekt ↓</p>
+        <a href="#top" class="info"class="scroll-link" id="back-to-top">↑ tillbaka ↑</a>
+        <!--<p class="info">↓ projekt ↓</p> -->
       </div>
 
     <!-- New Projekt (Helvete) -->
-    <div class="project">
+    <div class="project" id="project1">
         <div class="carousel">
             <h1>Helvete</h1>
             <h2>oktober 2024</h2>
@@ -212,6 +368,7 @@
                 <div class="carousel-slide">
                     <img src="https://dl.dropboxusercontent.com/scl/fi/3bimt6fu14cuixkno7f6f/Helvete_StudioBilder_Redigerade00008.jpg?rlkey=k20k1d7hvsmye9wqa68bw22jj&st=cvdqrby8&dl=0" alt="Olle Ljung">
                 </div>
+                
                 <div class="carousel-slide">
                     <img src="https://dl.dropboxusercontent.com/scl/fi/kg1l388r1ybivzed1k294/Helvete_StudioBilder_Redigerade00003.jpg?rlkey=g8g54w90ukbk4nkg5cczf1kh3&st=n8ymt5l1&dl=0" alt="Projekt 1 Bild 2">
                 </div>
@@ -222,10 +379,13 @@
                     <img src="https://dl.dropboxusercontent.com/scl/fi/ur3gcjs3zdowc16itrou3/Helvete_StudioBilder_Redigerade00007.jpg?rlkey=dij6ycbxl2r0y5e1cyrscaify&st=gmbu0zxn&dl=0" alt="Projekt 1 Bild 2">
                 </div>
                 <div class="carousel-slide">
-                    <img src="https://dl.dropboxusercontent.com/scl/fi/fv5vx6k1aaadlo0dqpv6o/Helvete_ScanRed_2.1.jpg?rlkey=p9uggxww5t0n7m50314vd0jda&st=hgbim3ul&dl=0" alt="Projekt 1 Bild 2">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/x8k0u4pv9wb3ijyocbhai/Helvete_Scan_Hemsida2.0-3.jpg?rlkey=locmkn95o1zcb4tsbmn5hu7e7&st=y4h767ld&dl=0" alt="Projekt 1 Bild 2">
                 </div>
                 <div class="carousel-slide">
-                    <img src="https://dl.dropboxusercontent.com/scl/fi/nr6gdc40sjyumsnm6iio2/Helvete_ScanRed_2.2_komprimerad.jpg?rlkey=w54jz4en8h34ze51kdmz692u0&st=vjs1hx4a&dl=0" alt="Projekt 1 Bild 2">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/kcpt5spqdb96e5bjhoew3/Helvete_Scan_Hemsida2.0-2.jpg?rlkey=uujzagijo8qdlrpgvfc8fejm7&st=augkaamd&dl=0" alt="Projekt 1 Bild 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/gjymkdr97awfypwbvy32o/Helvete_Scan_Hemsida2.0-1.jpg?rlkey=7j17bx6h4ekdwv2fkx7eo47fn&st=3vsuwxaf&dl=0" alt="Projekt 1 Bild 2">
                 </div>
                 <div class="carousel-slide">
                     <img src="https://dl.dropboxusercontent.com/scl/fi/7g5n9gp2ovku8rxkcb7hg/Helvete_ScanRed_2.3_komprimerad.jpg?rlkey=5x1yjb3bu1m4lr7gfd9usttts&st=p7amtip8&dl=0" alt="Projekt 1 Bild 2">
@@ -234,10 +394,51 @@
                     <img src="https://dl.dropboxusercontent.com/scl/fi/703napn96itbk52r4657w/Helvete_ScanRed_2.4_komprimerad.jpg?rlkey=xeuylbmxtyugvlwv0cdwuol00&st=xl4arhyb&dl=0" alt="Projekt 1 Bild 2">
                 </div>
                 <div class="carousel-slide">
-                    <img src="https://dl.dropboxusercontent.com/scl/fi/ltonrr2wnqh88o99hbpg8/Helvete_ScanRed_2.5.jpg?rlkey=qgyvoex8gvhl6j02pyz44f6ka&st=jmd17psh&dl=0" alt="Projekt 1 Bild 2">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/nr6gdc40sjyumsnm6iio2/Helvete_ScanRed_2.2_komprimerad.jpg?rlkey=w54jz4en8h34ze51kdmz692u0&st=vjs1hx4a&dl=0" alt="Projekt 1 Bild 2">
                 </div>
                 <div class="carousel-slide">
-                    <img src="https://dl.dropboxusercontent.com/scl/fi/prfys7vzhhjd5wt3sy1gu/Helvete_ScanRed_2.6.jpg?rlkey=fit847pa770dnzl15uqj4b5bb&st=eul6079t&dl=0" alt="Projekt 1 Bild 2">
+                    <div class="audio-container">
+                        <audio controls>
+                            <source src="https://dl.dropboxusercontent.com/scl/fi/4ohpm6152p7hmo6h720uz/Olle-bm-01-Skepnader.wav?rlkey=chvyc9ztrgwf1lkhrvi0pkrv3&st=amtfxqfp&dl=0" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <h2>Skepnader</h2>
+                        <audio controls>
+                            <source src="https://dl.dropboxusercontent.com/scl/fi/sps8jv9tqrdiu5vq700sp/Olle-bm-02-Sk-rna.wav?rlkey=tt1okpc94cu7y4zeo4t2eb8ns&st=pbxtpgte&dl=0" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <h2>Skärna</h2>
+                        <audio controls>
+                            <source src="https://dl.dropboxusercontent.com/scl/fi/cybr5in8mjad5ybv7omm5/Olle-bm-03-Opak.wav?rlkey=2t8b5pt52noxwqlz3fv8ca0iw&st=7v3y5cym&dl=0" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <h2>Opak</h2>
+                        <audio controls>
+                            <source src="https://dl.dropboxusercontent.com/scl/fi/e2rfowbvju4xveqtr0z4f/Olle-bm-04-Br-nd.wav?rlkey=osgv1oloon0hipx59taklavg0&st=pajoindt&dl=0" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <h2>Bränd</h2>
+                        <audio controls>
+                            <source src="https://dl.dropboxusercontent.com/scl/fi/5h5oqxjre9sax0n3k7ldg/Olle-bm-05-Ikonoklast.wav?rlkey=l3f9tkn2pxzu4kc1rvgimeb4r&st=uv6m5ida&dl=0" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <h2>Ikonoklast</h2>
+                        <audio controls>
+                            <source src="https://dl.dropboxusercontent.com/scl/fi/k5tigd7fqfblf9c280gy4/Olle-bm-06-L-ga.wav?rlkey=8ehw0rl2bndf6pgqnbkzyf986&st=v9vr51c9&dl=0" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <h2>Låga</h2>
+                        <audio controls>
+                            <source src="https://dl.dropboxusercontent.com/scl/fi/4qcj7sqln2hqyf3l05ej5/Olle-bm-07-de.wav?rlkey=zj1746g47a22k55lj84wciiqu&st=w7nbobfb&dl=0" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <h2>Öde</h2>
+                        <audio controls>
+                            <source src="https://dl.dropboxusercontent.com/scl/fi/jl54pn6p9bt6a5oi1r28m/Olle-bm-08-Ande.wav?rlkey=22fz6z2iueuk095chdi5ywr6j&st=5te8kvjs&dl=0" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <h2>Ande</h2>
+                    </div>
                 </div>
             </div>
             <div class="carousel-buttons">
@@ -248,13 +449,18 @@
             <div class="click-zone right"></div>
             <div class="carousel-pagination">1/2</div>
         </div>
-        <div class="project-description">Detta projekt handlar om att återuppstarta ett nerlagt företag. Jag har valt att jobba med den legendarisk blackmetal skiv butiken Helvet som låg i Oslo på 90-talet. 
-            I min fiktiva uppstart har skivbutiken blivigt ett electroniskt musik projekt som jag har get en visuell identitet till.</div>
+        <div class="project-description">Visuell identitet från andra året på Beckmans. 
+            Uppgiften var att göra om en visuell identitet från ett nedlagt företag och tänka om vad företagets nya syfte kunde vara idag.
+           
+            Min idé var att göra om den omtalade norska black metal-skivbutiken “Helvete” som var öppen på 90-talet som var förknippad med våld och kontroverser, från en skivbutik och mötesplats till ett elektroniskt musikalbum projekt. 
+            Jag ville utforska och reflektera över Helvetes komplexa historia, och samtidigt skapa en hyllning till platsens kulturella betydelse. Jag har skapat en logga, omslag för vinyl, cd och kassett samt en designmanual.
+            Spegel (Erling Swedenmark) har hjälpt till att förverkliga projektet och skapat musik för albumet. 
+            </div>
     </div>
 
       <!-- New Projekt (Essence)-->
-      <div class="project">
-        <div class="carousel">
+      <div class="project" id="project2">
+        <div class="carousel" >
             <h1>Essence</h1>
             <h2>januari 2025</h2>
             <div class="carousel-track">
@@ -281,13 +487,7 @@
                     <img src="https://dl.dropboxusercontent.com/scl/fi/5eyr8iy0cqkk236cwkv5n/IMG_0293.JPG?rlkey=xiq8aixj0r5792jdh6howlta9&st=imshfzl7&dl=0" alt="Projekt 2 Bild 3">
                 </div>
                 <div class="carousel-slide">
-                    <img src="https://dl.dropboxusercontent.com/scl/fi/ycy3lw0dlvflfsao6zkhr/000066900010.jpg?rlkey=r6dyqulj7gdy7yi0i7zpgbcm6&st=rlpel3hi&dl=0" alt="Projekt 2 Bild 3">
-                </div>
-                <div class="carousel-slide">
                     <img src="https://dl.dropboxusercontent.com/scl/fi/kniscqwlmlo0t0jj7mdu1/000066880014.jpg?rlkey=juf6zv34wrbowsgzx7is0ynhd&st=4kdd9lkj&dl=0" alt="Projekt 2 Bild 3">
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://dl.dropboxusercontent.com/scl/fi/fr3t631azt34lazrzbflp/000066900020.jpg?rlkey=cx2njzds22iii5vubtrgit9v8&st=s2hcalc2&dl=0" alt="Projekt 2 Bild 3">
                 </div>
             </div>
             <div class="carousel-buttons">
@@ -298,11 +498,15 @@
             <div class="click-zone right"></div>
             <div class="carousel-pagination">1/3</div>
         </div>
-        <div class="project-description"> Redaktionellt arbete tillsamans med Edda Eliasson, Emmy Seeger och Wilma Reichardt. Emina Iman är en kreatör vars konst och uttryck kretsar kring frihet, individualitet, pondus och kreativitet. Genom att fördjupa sig i det specifika som definierar oss, lyfter hon fram det som förenar oss – genom dans, bild, poesi och samtal.</div>
+        <div class="project-description"> Redaktionellt arbete från andra året på Beckmans i samarbete med Emina Iman från Juice Studios, i grupp med Edda Eliasson, Emmy Seeger och Wilma Reichardt.
+            Uppgiften var att göra en 8 sidig tidning om en av kreatörerna från Juice Studios genom att samla och producera material.
+            Emina Iman är en kreatör vars konst och uttryck kretsar kring frihet, individualitet, pondus och kreativitet. Genom att fördjupa sig i det specifika som definierar oss, lyfter hon fram det som förenar oss – genom dans, bild, poesi och samtal.
+            Med ett vernissage visades tidningen upp på Hobo Hotell. 
+            </div>
     </div>
 
     <!-- New Projekt (Magasin 3) -->
-    <div class="project">
+    <div class="project" id="project3">
         <div class="carousel">
             <h1>Magasin 3</h1>
             <h2>januari 2024</h2>
@@ -328,20 +532,26 @@
             <div class="carousel-pagination">1/3</div>
         </div>
         <div class="project-description">
-            I en sammarbets kurs tillsamans med Magasin 3 har vi utmanats vad en museeaffish kan vara.
+            Affisch från första året på Beckmans i samarbete med Magasin III.
+Uppgiften var att göra en utställningsaffisch till Sirous Namazis utställning “Pending” utifrån frågeställningen “Har konst i uppgift att kommunicera?”.
+
+“Hard to find, easy to love” var Magasin 3’s förra slogan, vilka är det som hittar? Jag ville utforska och ta upp frågan om museets målgrupp. 
+Gick det att göra den bredare utan att behöva göra den större? Jag ville rikta mig till yngre män som en kontrast till “kulturtanterna” som är överrepresenterade bland kulturbesökare. 
+Locka en ny publik som inte känner samma trygghet i musse rummen som en van konstintresserad besökare. Genom att utforma affischen som en reseplanerare i en estetik som många känner igen sig i så ville jag vägleda min nya publik till de gömda lokalerna i Frihamnen.
+
         </div>
     </div>
     
 
        <!-- New Projekt (Landscapes)-->
-       <div class="project">
+       <div class="project" id="project4">
         <div class="carousel">
             <h1>Landscapes</h1>
             <h2>mars 2024</h2>
             <div class="carousel-track">
             <div class="carousel-slide">
 
-                <video controls preload="metadata">
+                <video controls poster="https://dl.dropboxusercontent.com/scl/fi/ikiiemq1zix2mr8e7m5gq/Landscape_Stills9.jpg?rlkey=he10cl9wcx01q5wsq7cotybb4&st=zm6zho3v&dl=0" preload="metadata">
                     <source src="https://dl.dropboxusercontent.com/scl/fi/l9jzp733oy5753wuhmzd1/Landscapes.mp4?rlkey=jhcfjwl3cnmroc4bym899ii5b&st=y2a6dy91&dl=0" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -380,11 +590,15 @@
             <div class="click-zone right"></div>
             <div class="carousel-pagination">1/1</div>
         </div>
-        <div class="project-description">Musik video med Emmy och Phoebe med kmh.</div>
+        <div class="project-description">Animerad musikvideo från första året på Beckmans i samarbete med Kungliga Musikhögskolan, i grupp med Emmy Seeger och Phoebe Crookes.
+            Uppgiften var att göra en video utifrån en låt komponerad av en student från KMH.
+            En elektronisk låt producerad av Vilmar Janson blev till ett klassiskt riddare-och-drake-drama. Utan begränsningar för innehållet hämtade vi inspiration från musiken och varandra.
+            
+            Videon visades upp i Wisdome på Tekniska Museet.</div>
     </div>
 
       <!-- New Projekt (kan du göra ett g åt mig?)-->
-      <div class="project">
+      <div class="project" id="project5">
         <div class="carousel">
             <h1>Kan du göra ett g åt mig?</h1>
             <h2>oktober 2023</h2>
@@ -411,21 +625,23 @@
             <div class="click-zone right"></div>
             <div class="carousel-pagination">1/4</div>
         </div>
-        <div class="project-description">Ett uppslag i en fanzine tillsamans med min klass på Beckmans på temaat typografi gjorde jag om bokstaven g.</div>
+        <div class="project-description">Mina sidor i A-Ö, ett fanzine från första året på Beckmans om typografi tillsammans med min klass.
+            Min del handlar om bokstaven g, hur visuellt unik den kan vara för varandra. Genom att fråga personer om de kunde göra ett g åt mig skapade jag en samling för att jämföra hur olika de kan se ut.
+            </div>
     </div>
 
          <!-- New Projekt (Netralon)-->
-         <div class="project">
+         <div class="project" id="project6">
             <div class="carousel">
                 <h1>Netralon</h1>
                 <h2>november 2023</h2>
                 <div class="carousel-track">
                    
                     <div class="carousel-slide">
-                        <img src="https://dl.dropboxusercontent.com/scl/fi/tcs0zx41faao5u5cvqhgp/Netralon_Produkbild2_komprimerad.jpg?rlkey=mqqcjteaieuowsaxbtu0yatjw&st=2wzdlyiv&dl=0" alt="Landscapes">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/a95wtvj17naefu9ok5sgg/Netralon_Produkbilder_Sladd1_komprimerad.jpg?rlkey=4l195q2yu6ladd7fz9en1tzy9&st=d4ri1sma&dl=0" alt="Landscapes">
                     </div>
                     <div class="carousel-slide">
-                        <img src="https://dl.dropboxusercontent.com/scl/fi/a95wtvj17naefu9ok5sgg/Netralon_Produkbilder_Sladd1_komprimerad.jpg?rlkey=4l195q2yu6ladd7fz9en1tzy9&st=d4ri1sma&dl=0" alt="Landscapes">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/tcs0zx41faao5u5cvqhgp/Netralon_Produkbild2_komprimerad.jpg?rlkey=mqqcjteaieuowsaxbtu0yatjw&st=2wzdlyiv&dl=0" alt="Landscapes">
                     </div>
                     <div class="carousel-slide">
                         <video controls preload="metadata">
@@ -433,38 +649,23 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                      <div class="carousel-slide">
-                        <img src="https://dl.dropboxusercontent.com/scl/fi/pts3anup1o9o2mv1bi55m/P1060230.JPG?rlkey=isd9bljebqf41juun8onkmkz6&st=3mb03re8&dl=0" alt="Projekt 2 Bild 1">
+                    <div class="carousel-slide">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/27i0jbmtiyjsbyqy7564q/Netralon_vernisage-2.jpg?rlkey=au9whmzov4867edv70kz9vo90&st=oydf2wn8&dl=0" alt="Projekt 2 Bild 2">
                     </div>
                     <div class="carousel-slide">
-                        <img src="https://dl.dropboxusercontent.com/scl/fi/wy1kq285jyxfjvqsduin7/P1060198.JPG?rlkey=khkotkl6lyq3rgvsdys4l52ol&st=hht83x44&dl=0" alt="Projekt 2 Bild 2">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/9c7j7hp4n8oofgbsay0pi/Netralon_vernisage-3.jpg?rlkey=z1cl4e2dmp2rculgri70h5zey&st=2lmvd5pp&dl=0" alt="Projekt 2 Bild 4">
                     </div>
                     <div class="carousel-slide">
-                        <img src="https://dl.dropboxusercontent.com/scl/fi/cif3lgo54lohtyqv9tm3z/P1060236.JPG?rlkey=i4w2x5es7uj76z7jsq0u885a8&st=0aze7fo2&dl=0" alt="Projekt 2 Bild 4">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/015nz04qc7s7dk09n2dx8/Netralon_vernisage-1.jpg?rlkey=ieah0au4nmymss5xkqpf431h2&st=w9rvqag3&dl=0" alt="Projekt 2 Bild 6">
                     </div>
                     <div class="carousel-slide">
-                        <img src="https://dl.dropboxusercontent.com/scl/fi/d6whrco45c8sku3s3n6ja/P1060263.JPG?rlkey=x70jkp6s05w96jtpf49c7t4sw&st=pmqgvkf8&dl=0" alt="Projekt 2 Bild 6">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://dl.dropboxusercontent.com/scl/fi/63yier2ihpfbrv7izjtsj/P1060285.JPG?rlkey=dotwfmwyzqt4ozn9zwstdr4ae&st=68e8e0e5&dl=0" alt="Projekt 2 Bild 7">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://dl.dropboxusercontent.com/scl/fi/olczl7aiq6l5jc2009wks/P1060370.JPG?rlkey=5upa9ae5q8bwnhth68tk78hyo&st=k2k8ieqi&dl=0" alt="Projekt 2 Bild 1">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://dl.dropboxusercontent.com/scl/fi/86y0sabi125948rtuek03/P10100181.JPG?rlkey=k884i2i7n819tn9ktv2qpdjrl&st=t2z5gyln&dl=0" alt="Projekt 2 Bild 1">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/4a9pswylau7zome27n1a2/Netralon_visitkort.jpg?rlkey=nk9fc3j36d8g9hhlpzq4gvlod&st=2zv1xobk&dl=0" alt="Projekt 2 Bild 1">
                     </div>
                     <div class="carousel-slide">
                         <img src="https://dl.dropboxusercontent.com/scl/fi/j0hmlmdlvk09ry1c1iyvl/Foto-03.11.23-15-13-58.jpg?rlkey=szpk842a4vyy6do7t917533ze&st=hxeruejl&dl=0" alt="Projekt 2 Bild 1">
                     </div>
                     <div class="carousel-slide">
                         <img src="https://dl.dropboxusercontent.com/scl/fi/dp63slzibmh0m1j4p8p5q/Foto-13.11.23-16-37-00.jpg?rlkey=yql2sssbd12ey3ho55ygpwnqx&st=m2wiwugl&dl=0" alt="Projekt 2 Bild 1">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://dl.dropboxusercontent.com/scl/fi/cpz9kw359d92k26anflhz/Foto-13.11.23-17-00-02.jpg?rlkey=esdb7z4k269iiltxb258gqkmh&st=r48kuqqd&dl=0" alt="Projekt 2 Bild 1">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://dl.dropboxusercontent.com/scl/fi/nx55islr85ye8t27ax03u/P1010039.JPG?rlkey=yg16dnmh2kjrzxx7b5ikkkbg5&st=po83kk3u&dl=0" alt="Projekt 2 Bild 5">
                     </div>
                 </div>
                 <div class="carousel-buttons">
@@ -475,8 +676,17 @@
                 <div class="click-zone right"></div>
                 <div class="carousel-pagination">1/14</div>
             </div>
-            <div class="project-description"> Netralon är ett spel där du tar dig igenom en jobbdag ett företag från 90-talet. Ett spel som jag till sammans med Vilmer, Linn och Ella har kodat, animerat, bygt och lödigt ihop helt från grunden. </div>
-        </div>
+            <div class="project-description"> Ett spel skapat i samarbete med Tekniska museet, i grupp med Ella Farestam, Linn Sehlstedt och Wilmer Norrby.
+                Briefen var att skapa ett spel baserat på något från tekniska museet som skulle spelas av barn. 
+                Framgångsrika IT-företaget NETRALON var aktiva under 2000-talet. Under en dag på Tekniska Museet gav NETRALON möjligheten för besökare att praktisera och prova på en klassisk jobbdag genom att klara tre arbetsuppgifter: svara snabbt på sms, radera massa mejl och skälla ut en klagande kollega. 
+                Tillsammans kom vi på konceptet, designade och programmerade spelet, lödde sladdar och knappar samt byggde mobiltelefonerna från grunden. 
+                Spelet visades och spelades på Tekniska museet.
+                 </div>
+            </div>
+            <footer id="info">
+                <img class="profil" src="https://dl.dropboxusercontent.com/scl/fi/nx55islr85ye8t27ax03u/P1010039.JPG?rlkey=yg16dnmh2kjrzxx7b5ikkkbg5&st=po83kk3u&dl=0" alt="olle ljung">
+                <div class="project-description"> Grafisk designer, art director och visuell kreatör baserad i Stockholm. Studerar kandidat på Beckmans. </div>
+            </footer>
 
     <script>
         const carousels = document.querySelectorAll('.carousel');
@@ -507,6 +717,7 @@
             };
 
             const moveToSlide = (index) => {
+                track.style.transition = "transform 0.45s ease-in-out";
                 track.style.transform = `translateX(-${100 * index}%)`;
                 currentIndex = index;
                 updatePagination();
@@ -543,6 +754,119 @@
         const video = document.querySelector("video");
 video.muted = false; // Ensures the video is not muted
 
+document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll(".scroll-link");
+
+    links.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll(".scroll-link");
+    const hoverImage = document.getElementById("hover-image");
+
+    links.forEach(link => {
+        link.addEventListener("mouseover", function (e) {
+            const imgSrc = this.getAttribute("data-image");
+            if (imgSrc) {
+                hoverImage.src = imgSrc;
+                hoverImage.style.display = "block";
+            }
+        });
+
+        link.addEventListener("mousemove", function (e) {
+            hoverImage.style.top = e.pageY + 10 + "px"; 
+            hoverImage.style.left = e.pageX + 10 + "px";
+        });
+
+        link.addEventListener("mouseleave", function () {
+            hoverImage.style.display = "none";
+        });
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const backToTop = document.getElementById("back-to-top");
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 660) { // Ändra nummer till önskad punkt
+            backToTop.style.opacity = "1"; // Fade in
+        } else {
+            backToTop.style.opacity = "0"; // Fade out
+        }
+    });
+});
+document.getElementById("back-to-top").addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" // Smooth scrolling effect
+    });
+});
+const carousel = document.querySelector(".carousel-track");
+const slides = document.querySelectorAll(".carousel-slide");
+
+let startX, endX;
+let currentIndex = 0;
+
+carousel.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+});
+
+carousel.addEventListener("touchend", (e) => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    const threshold = 50; // Minimum swipe distance
+
+    if (startX - endX > threshold) {
+        // Swipe left (next slide)
+        moveSlide(1);
+    } else if (endX - startX > threshold) {
+        // Swipe right (previous slide)
+        moveSlide(-1);
+    }
+}
+
+function moveSlide(direction) {
+    currentIndex += direction;
+
+    if (currentIndex < 0) {
+        currentIndex = slides.length - 1; // Go to last slide
+    } else if (currentIndex >= slides.length) {
+        currentIndex = 0; // Go back to first slide
+    }
+
+    // Move slides using transform
+    const offset = -currentIndex * 100; // Each slide is 100% width
+    carousel.style.transform = `translateX(${offset}%)`;
+}
+document.addEventListener("DOMContentLoaded", function () {
+    const audios = document.querySelectorAll("audio");
+
+    audios.forEach(audio => {
+        audio.addEventListener("play", function () {
+            audios.forEach(otherAudio => {
+                if (otherAudio !== audio) {
+                    otherAudio.pause();
+                }
+            });
+        });
+    });
+});
 
     </script>
 </body>
